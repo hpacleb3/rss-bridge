@@ -2,7 +2,7 @@
 class TwitterBridge extends BridgeAbstract {
 	const NAME = 'Twitter Bridge';
 	const URI = 'https://twitter.com/';
-	const CACHE_TIMEOUT = 300; // 5min
+	const CACHE_TIMEOUT = 20; // 5min
 	const DESCRIPTION = 'returns tweets';
 	const MAINTAINER = 'pmaziere';
 	const PARAMETERS = array(
