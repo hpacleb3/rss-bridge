@@ -12,7 +12,8 @@ class NexonBridge extends BridgeAbstract {
 		foreach($html->find('div.b_subject') as $element){
 			$item = array();
 			$title = $element->find('.subject', 0)->plaintext;
-			$uri = $element->subject.href;
+			$titles = $element->find('.subject', 0);
+			$uri = $titles.attr("href");
 			$item['title'] = $title;
 			$item['uri'] = $uri;
 			
