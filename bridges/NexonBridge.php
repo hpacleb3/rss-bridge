@@ -1,5 +1,5 @@
 <?php
-class nexonbridge extends BridgeAbstract {
+class NexonBridge extends BridgeAbstract {
 	const NAME        = 'Elsword Patch Nexon Bridge';
 	const URI         = 'http://elsword.nexon.com/news/notice/list.aspx?emNoticeCode=Inspection';
 	const DESCRIPTION = 'Returns Latest KR Elsword Patch news';
