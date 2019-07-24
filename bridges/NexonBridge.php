@@ -9,10 +9,10 @@ class NexonBridge extends BridgeAbstract {
  	public function collectData() {
 			$html = getSimpleHTMLDOM(self::URI)
 			or returnServerError('Could not request Elsword Nexon Patch Notes.');
-		foreach($html->find('div.b_subject') as $element){
+		foreach($html->find('h3.subject') as $element){
 			$item = array();
-			$title = $element->find('.subject', 0)->plaintext;
-			$urir = $element->find('.subject', 0)->attr('href');
+			$title = $element->plaintext;
+			$urir = $element->attr('href');
 			$item['title'] = $title;
 			$item['uri'] = $urir;
 			
