@@ -11,8 +11,8 @@ class NexonBridge extends BridgeAbstract {
 			or returnServerError('Could not request Elsword Nexon Patch Notes.');
 		foreach($html->find('h3.subject a') as $element){
 			$item = array();
-			$item['title'] = ($element->href);
-			$item['title'] = ($element->innerText);
+			$item['title'] = ($element.href);
+			$item['title'] = ($element.innerText);
 			
 			$this->items[] = $item;
 			
