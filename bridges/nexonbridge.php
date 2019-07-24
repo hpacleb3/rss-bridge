@@ -7,7 +7,7 @@ class nexonbridge extends BridgeAbstract {
   
  	public function collectData() {
 			$html = getSimpleHTMLDOM(self::URI)
-			or returnServerError('Could not request Footito.');
+			or returnServerError('Could not request Elsword Nexon Patch Notes.');
 
 	}
   
