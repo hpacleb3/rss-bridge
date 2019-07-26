@@ -1,7 +1,7 @@
 <?php
 class NexonBridge extends BridgeAbstract {
 	const NAME        = 'Elsword Patch Nexon Bridge';
-	const URI         = 'http://elsword.nexon.com/news/notice/list.aspx?emNoticeCode=Inspection';
+	const URI         = 'http://elsword.nexon.com/news/update/list.aspx';
 	const DESCRIPTION = 'Returns Latest KR Elsword Patch news';
 	const MAINTAINER  = 'me trying to do this';
 	const CACHE_TIMEOUT = 60;
