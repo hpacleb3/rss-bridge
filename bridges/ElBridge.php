@@ -12,7 +12,7 @@ class ElBridge extends BridgeAbstract {
 		foreach($html->find('li.tabCot a') as $element){
 			$item = array();
 			$uri = $element->href;
-			$title = $element->plaintext;
+			$title = $element->href;
 			$item['title'] = $title;
 			$item['uri'] = $uri;
 			
