@@ -1,6 +1,6 @@
 <?php
 class ElBridge extends BridgeAbstract {
-	const NAME        = 'Elsword Patch Nexon Bridge';
+	const NAME        = 'Elsword Slider Bridge';
 	const URI         = 'http://launcher.elswordonline.com/en/';
 	const DESCRIPTION = 'Returns Latest Slider Elsword news';
 	const MAINTAINER  = 'me trying to do this';
