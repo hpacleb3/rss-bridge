@@ -13,7 +13,8 @@ class NexonBridge extends BridgeAbstract {
 			$item = array();
 			$uri = $element->href;
 			$title = $element->plaintext;
-			$item['title'] = $title;
+			$item['description'] = $title;
+			$item['title'] = $uri;
 			$item['uri'] = $uri;
 			
 			$this->items[] = $item;
