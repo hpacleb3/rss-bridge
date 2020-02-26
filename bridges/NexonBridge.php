@@ -23,7 +23,7 @@ class NexonBridge extends BridgeAbstract {
 			Debug::log($test);
 			$timetext = strval($test);
 			Debug::log($timetext);
-			$this['timestamp'] = strtotime($timetext);
+			$this['timestamp'] = strtotime($timetext); // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php:26
 			Debug::log($this['timestamp']);
 			$this->items[] = $item;
 			
