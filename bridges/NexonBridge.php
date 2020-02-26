@@ -18,9 +18,9 @@ class NexonBridge extends BridgeAbstract {
 			$articleHTML = getSimpleHTMLDOMCached($uri)
 				or returnServerError('Could not request ' . $uri);
 			$getDate = $articleHTML->find('span.date',0);
-			$getDate->plaintext = str_replace(' 오후 ',' Asia/Seoul ', $getDate->plaintext);
-			Debug::log($getDate->plaintext);
-			$this['timestamp'] = strtotime($getDate[0]->plaintext); // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
+			$getDate->innertext = str_replace(' 오후 ',' Asia/Seoul ', $getDate->innertext);
+			Debug::log($getDate->innertext);
+			$this['timestamp'] = strtotime($getDate[0]->innertext); // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
 			Debug::log($this['timestamp']);
 			$this->items[] = $item;
 			
