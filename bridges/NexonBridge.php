@@ -12,7 +12,7 @@ class NexonBridge extends BridgeAbstract {
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
 			$item['uri'] = $uri;
-			$articleHTML = getSimpleHTMLDOMCached($item['uri'],10);
+			$articleHTML = getSimpleHTMLDOM($item['uri']);
 			$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
 			date_default_timezone_set('Asia/Seoul');
 			$test  = str_replace(" 오후 "," ", $getDate);
