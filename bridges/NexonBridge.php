@@ -15,8 +15,7 @@ class NexonBridge extends BridgeAbstract {
 			//timestamp doesnt work
 		//	$articleHTML = getSimpleHTMLDOM($item['uri']);
 		//	$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
-		//	date_default_timezone_set('Asia/Seoul');
-		//	$test  = str_replace(" 오후 "," ", $getDate);
+		//	$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate);
 		//	$this['timestamp'] = strtotime($test);
 			$title = $element->plaintext;
 			$item['content'] = $title;
