@@ -20,7 +20,7 @@ class NexonBridge extends BridgeAbstract {
 			$getDate = $articleHTML->find('span.date',0);
 			$getDate->plaintext = str_replace(' 오후 ',' Asia/Seoul ', $getDate->plaintext);
 			Debug::log($getDate->plaintext);
-			$this['timestamp'] = strtotime($getDate->plaintext); // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
+			$this['timestamp'] = strtotime($getDate[0]->plaintext); // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
 			Debug::log($this['timestamp']);
 			$this->items[] = $item;
 			
