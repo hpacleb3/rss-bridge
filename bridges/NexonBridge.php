@@ -13,10 +13,11 @@ class NexonBridge extends BridgeAbstract {
 			$uri = $element->href;
 			$item['uri'] = $uri;
 			//timestamp doesnt work
-		//	$articleHTML = getSimpleHTMLDOM($item['uri']);
-		//	$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
-		//	$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate);
-		//	$this['timestamp'] = strtotime($test);
+			$articleHTML = getSimpleHTMLDOMCached($uri);
+			or returnServerError('Could not request ' . $uri);
+			$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
+			$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate);
+			$this['timestamp'] = strtotime($test);
 			$title = $element->plaintext;
 			$item['content'] = $title;
 			$item['title'] = $uri;
