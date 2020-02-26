@@ -16,7 +16,7 @@ class NexonBridge extends BridgeAbstract {
 			$item['content'] = $title;
 			$item['title'] = $uri;
 			$item['uri'] = $uri;
-			$articleHTML = getSimpleHTMLDOMCached($item['uri']);
+			$articleHTML = getSimpleHTMLDOMCached(self::$uri);
 			$getDate = $articleHTML->find('div.bv_date span.date',0)->plaintext;
 			date_default_timezone_set('Asia/Seoul');
 			$test  = str_replace(" 오후 "," ", $getDate);
