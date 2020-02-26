@@ -21,7 +21,8 @@ class NexonBridge extends BridgeAbstract {
 			$text = $getDate->plaintext;
 			$test  = str_replace(' 오후 ',' Asia/Seoul ', $text);
 			Debug::log($test);
-			$this['timestamp'] = strtotime($test);
+			$timetext = strval($test);
+			$this['timestamp'] = strtotime($timetext);
 			Debug::log($this['timestamp']);
 			$this->items[] = $item;
 			
