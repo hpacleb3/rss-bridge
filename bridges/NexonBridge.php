@@ -17,7 +17,7 @@ class NexonBridge extends BridgeAbstract {
 			//error around here
 			$getDate = $articleHTML->find('span.date',0);
 			$text = serialize($getDate->plaintext);
-			$test  = str_replace(" 오후 "," Asia/Seoul ", $text);
+			$test  = str_replace(' 오후 ',' Asia/Seoul ', $text);
 			$this['timestamp'] = strtotime($test);
 			$title = $element->plaintext;
 			$item['content'] = $title;
