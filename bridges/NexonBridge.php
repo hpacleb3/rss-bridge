@@ -12,16 +12,15 @@ class NexonBridge extends BridgeAbstract {
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
 			$item['uri'] = $uri;
+			$title = $element->plaintext;
+			$item['content'] = $title;
+			$item['title'] = $uri;
 			$articleHTML = getSimpleHTMLDOMCached($uri)
 				or returnServerError('Could not request ' . $uri);
-			//error around here
 			$getDate = $articleHTML->find('span.date',0);
 			$text = serialize($getDate->plaintext);
 			$test  = str_replace(' 오후 ',' Asia/Seoul ', $text);
 			$this['timestamp'] = strtotime($test);
-			$title = $element->plaintext;
-			$item['content'] = $title;
-			$item['title'] = $uri;
 			$this->items[] = $item;
 			
 		}
