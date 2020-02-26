@@ -15,7 +15,7 @@ class NexonBridge extends BridgeAbstract {
 			//timestamp doesnt work , maybe getSimpleHTMLDOMcached in the next line doesnt work as well
 			$articleHTML = getSimpleHTMLDOMCached($uri)
 				or returnServerError('Could not request ' . $uri);
-			$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
+			$getDate = $articleHTML->find('div.bv_date span.date');
 			$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate);
 			$this['timestamp'] = strtotime($test);
 			$title = $element->plaintext;
