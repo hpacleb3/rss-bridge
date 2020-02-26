@@ -20,8 +20,9 @@ class NexonBridge extends BridgeAbstract {
 			$getDate = $articleHTML->find('span.date',0);
 			$text = serialize($getDate->plaintext);
 			$test  = str_replace(' 오후 ',' Asia/Seoul ', $text);
-			print_r($test);
 			$this['timestamp'] = strtotime($test);
+			Debug::log($test);
+			Debug::log($this['timestamp']);
 			$this->items[] = $item;
 			
 		}
