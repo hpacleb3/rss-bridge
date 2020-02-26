@@ -15,8 +15,8 @@ class NexonBridge extends BridgeAbstract {
 			$articleHTML = getSimpleHTMLDOMCached($uri)
 				or returnServerError('Could not request ' . $uri);
 			//error around here
-			$getDate = $articleHTML->find('span.date');
-			$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate[0]->plaintext);
+			$getDate = $articleHTML->find('span.date',0);
+			$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate->plaintext);
 			$this['timestamp'] = strtotime($test);
 			$title = $element->plaintext;
 			$item['content'] = $title;
