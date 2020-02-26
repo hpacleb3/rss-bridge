@@ -15,9 +15,11 @@ class NexonBridge extends BridgeAbstract {
 			$title = $element->plaintext;
 			$item['content'] = $title;
 			$item['title'] = $uri;
+			DEBUG::log($uri);
 			$articleHTML = getSimpleHTMLDOM($uri)
 				or returnServerError('Could not request ' . $uri);
 			$getDate = $articleHTML->find('span.date',0)->plaintext;
+			DEBUG::log($getDate);
 			$getDate = (string)$getDate;
 			$getDate = str_replace(' 오후 ',' Asia/Seoul ', $getDate);
 			$lastDate = strtotime($getDate);
