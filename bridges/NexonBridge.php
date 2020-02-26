@@ -12,7 +12,7 @@ class NexonBridge extends BridgeAbstract {
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
 			$item['uri'] = $uri;
-			//timestamp doesnt work
+			//timestamp doesnt work , maybe getSimpleHTMLDOMcached in the next line doesnt work as well
 			$articleHTML = getSimpleHTMLDOMCached($uri);
 			$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
 			$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate);
