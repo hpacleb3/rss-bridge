@@ -8,12 +8,13 @@ class NexonBridge extends BridgeAbstract {
   
  	public function collectData() {
 			$html = getSimpleHTMLDOMCached($this->getURI(),60)
-			or returnServerError('Could not request Elsword Nexon Patch Notes.');
+				or returnServerError('Could not request Elsword Nexon Patch Notes.');
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
 			$item['uri'] = $uri;
 			//timestamp doesnt work , maybe getSimpleHTMLDOMcached in the next line doesnt work as well
-			$articleHTML = getSimpleHTMLDOMCached($uri);
+			$articleHTML = getSimpleHTMLDOMCached($uri)
+				or returnServerError('Could not request ' . $uri);
 			$getDate = $articleHTML->find('div.bv_date span.date')->plaintext;
 			$test  = str_replace(" 오후 "," Asia/Seoul ", $getDate);
 			$this['timestamp'] = strtotime($test);
