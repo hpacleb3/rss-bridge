@@ -12,7 +12,7 @@ class NexonBridge extends BridgeAbstract {
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
 			$item['uri'] = $uri;
-			$articleHTML = getSimpleHTMLDOMCached(item['uri'])
+			$articleHTML = getSimpleHTMLDOMCached($item['uri'])
 				or returnServerError('Could not request ' . $uri);
 			//error around here
 			$getDate = $articleHTML->find('div.bv_date span.date');
