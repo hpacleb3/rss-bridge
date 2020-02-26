@@ -7,7 +7,7 @@ class NexonBridge extends BridgeAbstract {
 	const CACHE_TIMEOUT = 300;
   
  	public function collectData() {
-			$html = getSimpleHTMLDOMCached(self::URI)
+			$html = getSimpleHTMLDOMCached(self::URI,300)
 				or returnServerError('Could not request Elsword Nexon Patch Notes.');
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
