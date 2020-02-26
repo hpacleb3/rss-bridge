@@ -7,7 +7,7 @@ class NexonBridge extends BridgeAbstract {
 	const CACHE_TIMEOUT = 60;
   
  	public function collectData() {
-			$html = getSimpleHTMLDOMCached($this->getURI(), 60)
+			$html = getSimpleHTMLDOM(self::URI)
 				or returnServerError('Could not request Elsword Nexon Patch Notes.');
 		foreach($html->find('h3.subject a') as $element){
 			$uri = $element->href;
@@ -15,7 +15,7 @@ class NexonBridge extends BridgeAbstract {
 			$title = $element->plaintext;
 			$item['content'] = $title;
 			$item['title'] = $uri;
-			$articleHTML = getSimpleHTMLDOMCached($uri,60)
+			$articleHTML = getSimpleHTMLDOM($uri)
 				or returnServerError('Could not request ' . $uri);
 			$getDate = $articleHTML->find('span.date',0)->plaintext;
 			$getDate = (string)$getDate;
