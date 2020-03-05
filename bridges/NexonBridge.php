@@ -9,7 +9,9 @@ class NexonBridge extends BridgeAbstract {
  	public function collectData() {
 			$html = getSimpleHTMLDOMCached(self::URI,300)
 				or returnServerError('Could not request Elsword Nexon Patch Notes.');
+		$i = 1
 		foreach($html->find('h3.subject a') as $element){
+			
 			$uri = $element->href;
 			$item['uri'] = $uri;
 			$title = $element->plaintext;
@@ -25,7 +27,7 @@ class NexonBridge extends BridgeAbstract {
 			$lastDate = strtotime($getDate);
 			$item['timestamp'] = $lastDate; // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
 			$this->items[] = $item;
-			
+			if ($i++ == 3) break;
 		}
 	}
   
