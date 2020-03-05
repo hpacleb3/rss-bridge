@@ -27,7 +27,7 @@ class NexonBridge extends BridgeAbstract {
 			$lastDate = strtotime($getDate);
 			$item['timestamp'] = $lastDate; // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
 			$this->items[] = $item;
-			if ($i++ == 3) break;
+			if ($i++ == 5) break;
 		}
 	}
   
