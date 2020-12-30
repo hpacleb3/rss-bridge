@@ -16,4 +16,5 @@ Youtube
 Nexon
 NNexon
 NNNexon
+GenshinImpact
 ElBridge
