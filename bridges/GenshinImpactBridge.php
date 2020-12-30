@@ -4,7 +4,7 @@ class GenshinImpactBridge extends BridgeAbstract {
 	const MAINTAINER = 'corenting';
 	const NAME = 'Genshin Impact';
 	const URI = 'https://genshin.mihoyo.com/en/news';
-	const CACHE_TIMEOUT = 7200; // 2h
+	const CACHE_TIMEOUT = 15; // 2h
 	const DESCRIPTION = 'News from the Genshin Impact website';
 	const PARAMETERS = array(
 		array(
