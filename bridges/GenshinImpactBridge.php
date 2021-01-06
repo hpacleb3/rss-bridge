@@ -42,14 +42,13 @@ class GenshinImpactBridge extends BridgeAbstract {
 
 			$item['title'] = $article_json['data']['title'];
 			$item['timestamp'] = strtotime($article_json['data']['start_time']);
-			$item['content'] = $article_json['data']['content'];
 			$item['uri'] = $this->getArticleUri($json_item);
 			$item['id'] = $json_item['contentId'];
 
 			// Picture
 			foreach($article_json['data']['ext'] as $ext) {
 				if ($ext['arrtName'] == 'banner' && count($ext['value']) == 1) {
-					$item['enclosures'] = array($ext['value'][0]['url']);
+					$item['content'] = array($ext['value'][0]['url']);
 					break;
 				}
 			}
