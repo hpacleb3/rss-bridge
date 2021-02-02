@@ -53,7 +53,7 @@ class GenshinImpactBridge extends BridgeAbstract {
 					break;
 				}
 			}
-			$item['content'] = 'https://i.imgur.com/mVGttnl.jpg';
+			$item['content'] .= ' https://i.imgur.com/mVGttnl.jpg';
 			$this->items[] = $item;
 		}
 	}
