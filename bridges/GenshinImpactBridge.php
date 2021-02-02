@@ -43,7 +43,6 @@ class GenshinImpactBridge extends BridgeAbstract {
 			$item['title'] = $article_json['data']['title'];
 			$item['timestamp'] = strtotime($article_json['data']['start_time']);
 			$item['uri'] = $this->getArticleUri($json_item);
-			$item['content'] = 'Default Value for this';
 			$item['id'] = $json_item['contentId'];
 
 			// Picture
@@ -53,7 +52,7 @@ class GenshinImpactBridge extends BridgeAbstract {
 					break;
 				}
 			}
-			$item['content'] .= ' Default for this is https://i.imgur.com/mVGttnl.jpg';
+			$item['description'] = ' Default for this is https://i.imgur.com/mVGttnl.jpg';
 			$this->items[] = $item;
 		}
 	}
