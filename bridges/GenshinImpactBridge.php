@@ -48,11 +48,11 @@ class GenshinImpactBridge extends BridgeAbstract {
 			// Picture
 			foreach($article_json['data']['ext'] as $ext) {
 				if ($ext['arrtName'] == 'banner' && count($ext['value']) == 1) {
-					$item['content'] = $ext['value'][0]['url'];
+					$item['content'] = (string)$ext['value'][0]['url'];
 					break;
 				}
 			}
-			$item['description'] = ' Default for this is https://i.imgur.com/mVGttnl.jpg';
+			$item['content'] .= ' Default for this is https://i.imgur.com/mVGttnl.jpg';
 			$this->items[] = $item;
 		}
 	}
