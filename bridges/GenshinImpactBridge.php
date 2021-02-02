@@ -37,7 +37,7 @@ class GenshinImpactBridge extends BridgeAbstract {
 			$article_res = getContents($article_url)
 				or returnServerError('Error while downloading the website content');
 			$article_json = json_decode($article_res, true);
-			
+			$ctr = 0;
 			$item = array();
 
 			$item['title'] = $article_json['data']['title'];
@@ -48,11 +48,18 @@ class GenshinImpactBridge extends BridgeAbstract {
 			// Picture
 			foreach($article_json['data']['ext'] as $ext) {
 				if ($ext['arrtName'] == 'banner' && count($ext['value']) == 1) {
-					$item['content'] = (string)$ext['value'][0]['url'];
+					$item['content'] = $ext['value'][0]['url'];
+					$ctr = 1;
 					break;
 				}
+				else {
+					$ctr = 0;
+				}
+				
 			}
-			$item['content'] .= ' Default for this is https://i.imgur.com/mVGttnl.jpg';
+			if ($ctr == 0){
+			$item['content'] = 'https://i.imgur.com/mVGttnl.jpg';
+			}
 			$this->items[] = $item;
 		}
 	}
