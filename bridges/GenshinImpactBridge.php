@@ -42,8 +42,8 @@ class GenshinImpactBridge extends BridgeAbstract {
 
 			$item['title'] = $article_json['data']['title'];
 			$timezone='Asia/Manila';
-			$times = $article_json['data']['start_time'];
-			$date = new DateTime($times, new DateTimeZone($timezone));
+			$date = strtotime($article_json['data']['start_time']);
+			$date->setTimezone(new DateTimeZone('Asia/Manila')); 
 			$item['timestamp'] = $date;
 			$item['uri'] = $this->getArticleUri($json_item);
 			$item['id'] = $json_item['contentId'];
