@@ -4,7 +4,7 @@ class GenshinImpactBridge extends BridgeAbstract {
 	const MAINTAINER = 'corenting';
 	const NAME = 'Genshin Impact';
 	const URI = 'https://genshin.mihoyo.com/en/news';
-	const CACHE_TIMEOUT = 15; // 2h
+	const CACHE_TIMEOUT = 30;
 	const DESCRIPTION = 'News from the Genshin Impact website';
 	const PARAMETERS = array(
 		array(
@@ -41,7 +41,9 @@ class GenshinImpactBridge extends BridgeAbstract {
 			$item = array();
 
 			$item['title'] = $article_json['data']['title'];
-			$item['timestamp'] = strtotime($article_json['data']['start_time']);
+			$timezone='Asia/Manila';
+			$date = new DateTime($article_json['data']['start_time'], new DateTimeZone($timezone));
+			$item['timestamp'] = $date;
 			$item['uri'] = $this->getArticleUri($json_item);
 			$item['id'] = $json_item['contentId'];
 
