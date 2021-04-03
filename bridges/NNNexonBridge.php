@@ -22,8 +22,8 @@ class NNNexonBridge extends BridgeAbstract {
 			DEBUG::log($uri);
 			$articleHTML = getSimpleHTMLDOMCached($uri)
 				or returnServerError('Could not request ' . $uri);
-			$getDate = $articleHTML->find('i_date',0);
-			$readDate = $getDate->find('span.data',0)->plaintext;
+			$getDate = $articleHTML->find('i_date');
+			$readDate = $getDate->find('span.data')->plaintext;
 			DEBUG::log($getDate);
 			$readDate = (string)$readDate;
 			$readDate = str_replace('.','-',$readDate);
