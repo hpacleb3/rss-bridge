@@ -11,9 +11,12 @@ class NNNexonBridge extends BridgeAbstract {
 				or returnServerError('Could not request Elsword Nexon Patch Notes.');
 		$i = 1;
 		foreach($html->find('ul.board_list li') as $element){
-			
+			DEBUG::log('HTML : ' . $html);
+			DEBUG::log('Element : ' . $element);
 			$uri= $element->find(' a', 0)->href;
+			DEBUG::log('URI : ' . $uri);
 			$subject = $element->find('span.subject', 0)->plaintext;
+			DEBUG::log('URI : ' . $subject);
 			$item['uri'] = $uri;
 			$item['content'] = $subject;
 			$item['title'] = $uri;
