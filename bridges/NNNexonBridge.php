@@ -12,7 +12,7 @@ class NNNexonBridge extends BridgeAbstract {
 		$i = 1;
 		foreach($html->find('ul.board_list li') as $element){
 			
-			$link= $element->find(' a')->href;
+			$uri= $element->find(' a')->href;
 			$subject = $element->find('span.subject')->plaintext;
 			$item['uri'] = $uri;
 			$title = $subject;
