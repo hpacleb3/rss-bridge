@@ -1,33 +1,33 @@
 <?php
-class NNexonBridge extends BridgeAbstract {
-	const NAME        = 'Elsword Patch 2 Nexon Bridge';
-	const URI         = 'http://elsword.nexon.com/news/notice/list.aspx?emNoticeCode=Inspection';
+class NNNexonBridge extends BridgeAbstract {
+	const NAME        = 'Elsword Patch Nexon Bridge';
+	const URI         = 'https://elsword.nexon.com/News/Notice/List?n4ArticleCategorySN=3';
 	const DESCRIPTION = 'Returns Latest KR Elsword Patch news';
 	const MAINTAINER  = 'me trying to do this';
-	const CACHE_TIMEOUT = 300;
+	const CACHE_TIMEOUT = 60;
   
  	public function collectData() {
-			$html = getSimpleHTMLDOMCached(self::URI,300)
+			$html = getSimpleHTMLDOMCached(self::URI,60)
 				or returnServerError('Could not request Elsword Nexon Patch Notes.');
 		$i = 1;
-		foreach($html->find('h3.subject a') as $element){
-			$uri = $element->href;
+		foreach($html->find('ul.board_list li') as $element){
+			$uri= $element->find(' a', 0)->href;
+			$subject = $element->find('span.subject', 0)->plaintext;
 			$item['uri'] = $uri;
-			$title = $element->plaintext;
-			$item['content'] = $title;
+			$item['content'] = $subject;
 			$item['title'] = $uri;
-			DEBUG::log($uri);
 			$articleHTML = getSimpleHTMLDOMCached($uri)
 				or returnServerError('Could not request ' . $uri);
-			$getDate = $articleHTML->find('span.date',0)->plaintext;
+			$getDate = $articleHTML->find('li.i_date', 0);
+			$readDate = $getDate->find('span.data', 0)->plaintext;
 			DEBUG::log($getDate);
-			$getDate = (string)$getDate;
-			$getDate = str_replace(' 오후 ',' Asia/Seoul ', $getDate);
-			$lastDate = strtotime($getDate);
+			$readDate = (string)$readDate;
+			$readDate = str_replace('.','-',$readDate);
+			$readDate = $readDate . ' Asia/Seoul';
+			$lastDate = strtotime($readDate);
 			$item['timestamp'] = $lastDate; // Error: Cannot use object of type NexonBridge as array in /app/bridges/NexonBridge.php
 			$this->items[] = $item;
 			if ($i++ == 5) break;
-			
 		}
 	}
   
